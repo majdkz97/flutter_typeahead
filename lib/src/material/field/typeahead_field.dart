@@ -474,7 +474,7 @@ class TypeAheadField<T> extends StatefulWidget {
   /// Defaults to true.
   final bool keepSuggestionsOnLoading;
 
-  final Widget iconWidget;
+  final Widget? iconWidget;
 
   /// If set to true, the suggestions box will remain opened even after
   /// selecting a suggestion.
