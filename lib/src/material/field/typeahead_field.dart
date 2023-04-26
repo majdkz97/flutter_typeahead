@@ -474,6 +474,8 @@ class TypeAheadField<T> extends StatefulWidget {
   /// Defaults to true.
   final bool keepSuggestionsOnLoading;
 
+  final Widget iconWidget;
+
   /// If set to true, the suggestions box will remain opened even after
   /// selecting a suggestion.
   ///
@@ -543,6 +545,7 @@ class TypeAheadField<T> extends StatefulWidget {
     this.hideOnEmpty = false,
     this.hideOnError = false,
     this.hideSuggestionsOnKeyboardHide = true,
+    this.iconWidget,
     this.keepSuggestionsOnLoading = true,
     this.keepSuggestionsOnSuggestionSelected = false,
     this.autoFlipDirection = false,
@@ -845,40 +848,49 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
       link: this._layerLink,
-      child: TextField(
-        focusNode: this._effectiveFocusNode,
-        controller: this._effectiveController,
-        decoration: widget.textFieldConfiguration.decoration,
-        style: widget.textFieldConfiguration.style,
-        textAlign: widget.textFieldConfiguration.textAlign,
-        enabled: widget.textFieldConfiguration.enabled,
-        keyboardType: widget.textFieldConfiguration.keyboardType,
-        autofocus: widget.textFieldConfiguration.autofocus,
-        inputFormatters: widget.textFieldConfiguration.inputFormatters,
-        autocorrect: widget.textFieldConfiguration.autocorrect,
-        maxLines: widget.textFieldConfiguration.maxLines,
-        textAlignVertical: widget.textFieldConfiguration.textAlignVertical,
-        minLines: widget.textFieldConfiguration.minLines,
-        maxLength: widget.textFieldConfiguration.maxLength,
-        maxLengthEnforcement:
-        widget.textFieldConfiguration.maxLengthEnforcement,
-        obscureText: widget.textFieldConfiguration.obscureText,
-        onChanged: widget.textFieldConfiguration.onChanged,
-        onSubmitted: widget.textFieldConfiguration.onSubmitted,
-        onEditingComplete: widget.textFieldConfiguration.onEditingComplete,
-        onTap: widget.textFieldConfiguration.onTap,
+      child: Row(
+        children: [
+          if(widget.iconWidget!=null)
+          widget.iconWidget,
+          
+          Expanded(
+            child: TextField(
+              focusNode: this._effectiveFocusNode,
+              controller: this._effectiveController,
+              decoration: widget.textFieldConfiguration.decoration,
+              style: widget.textFieldConfiguration.style,
+              textAlign: widget.textFieldConfiguration.textAlign,
+              enabled: widget.textFieldConfiguration.enabled,
+              keyboardType: widget.textFieldConfiguration.keyboardType,
+              autofocus: widget.textFieldConfiguration.autofocus,
+              inputFormatters: widget.textFieldConfiguration.inputFormatters,
+              autocorrect: widget.textFieldConfiguration.autocorrect,
+              maxLines: widget.textFieldConfiguration.maxLines,
+              textAlignVertical: widget.textFieldConfiguration.textAlignVertical,
+              minLines: widget.textFieldConfiguration.minLines,
+              maxLength: widget.textFieldConfiguration.maxLength,
+              maxLengthEnforcement:
+              widget.textFieldConfiguration.maxLengthEnforcement,
+              obscureText: widget.textFieldConfiguration.obscureText,
+              onChanged: widget.textFieldConfiguration.onChanged,
+              onSubmitted: widget.textFieldConfiguration.onSubmitted,
+              onEditingComplete: widget.textFieldConfiguration.onEditingComplete,
+              onTap: widget.textFieldConfiguration.onTap,
 //         onTapOutside: (_) {},
-        scrollPadding: widget.textFieldConfiguration.scrollPadding,
-        textInputAction: widget.textFieldConfiguration.textInputAction,
-        textCapitalization: widget.textFieldConfiguration.textCapitalization,
-        keyboardAppearance: widget.textFieldConfiguration.keyboardAppearance,
-        cursorWidth: widget.textFieldConfiguration.cursorWidth,
-        cursorRadius: widget.textFieldConfiguration.cursorRadius,
-        cursorColor: widget.textFieldConfiguration.cursorColor,
-        textDirection: widget.textFieldConfiguration.textDirection,
-        enableInteractiveSelection:
-        widget.textFieldConfiguration.enableInteractiveSelection,
-        readOnly: widget.hideKeyboard,
+              scrollPadding: widget.textFieldConfiguration.scrollPadding,
+              textInputAction: widget.textFieldConfiguration.textInputAction,
+              textCapitalization: widget.textFieldConfiguration.textCapitalization,
+              keyboardAppearance: widget.textFieldConfiguration.keyboardAppearance,
+              cursorWidth: widget.textFieldConfiguration.cursorWidth,
+              cursorRadius: widget.textFieldConfiguration.cursorRadius,
+              cursorColor: widget.textFieldConfiguration.cursorColor,
+              textDirection: widget.textFieldConfiguration.textDirection,
+              enableInteractiveSelection:
+              widget.textFieldConfiguration.enableInteractiveSelection,
+              readOnly: widget.hideKeyboard,
+            ),
+          ),
+        ],
       ),
     );
   }
