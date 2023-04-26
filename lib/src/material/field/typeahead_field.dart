@@ -851,7 +851,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
       child: Row(
         children: [
           if(widget.iconWidget!=null)
-          widget.iconWidget,
+          widget.iconWidget!,
           
           Expanded(
             child: TextField(
