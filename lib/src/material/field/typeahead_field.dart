@@ -476,6 +476,8 @@ class TypeAheadField<T> extends StatefulWidget {
 
   final Widget? iconWidget;
 
+  final Widget? suffixWidget;
+
   /// If set to true, the suggestions box will remain opened even after
   /// selecting a suggestion.
   ///
@@ -546,6 +548,7 @@ class TypeAheadField<T> extends StatefulWidget {
     this.hideOnError = false,
     this.hideSuggestionsOnKeyboardHide = true,
     this.iconWidget,
+    this.suffixWidget,
     this.keepSuggestionsOnLoading = true,
     this.keepSuggestionsOnSuggestionSelected = false,
     this.autoFlipDirection = false,
@@ -890,6 +893,9 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
               readOnly: widget.hideKeyboard,
             ),
           ),
+          
+           if(widget.suffixWidget!=null)
+          widget.suffixWidget!,
         ],
       ),
     );
